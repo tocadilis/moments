@@ -1,0 +1,34 @@
+<form (ngSubmit)="submit()" [formGroup]="momentForm" #formDir="ngForm">
+    <div class="form-group">
+        <label for="title">Título:</label>
+        <input 
+            type="text" 
+            placeholder="Coloque o título" 
+            formControlName="title" 
+            required 
+        />
+        <div *ngIf="title.invalid && formDir.submitted" class="validation-error">
+            <p *ngIf="title.errors?.['required']">O título é obrigatório.</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Descrição:</label>
+        <textarea 
+            type="text" 
+            placeholder="O que aconteceu?"
+            formControlName="description"  
+            required>
+        </textarea>
+        <div *ngIf="description.invalid && formDir.submitted" class="validation-error">
+            <p *ngIf="description.errors?.['required']">A descrição é obrigatória.</p>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="imageg">Coloque a foto:</label>
+        <input type="file" />
+    </div>
+
+    <input type="submit" value="{{ btnText }}" />
+</form>
